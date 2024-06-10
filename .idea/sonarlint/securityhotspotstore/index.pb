@@ -15,3 +15,9 @@ A
 src/TaskName.java,5\0\5038b707376f4b4b0631a381f985c301b875c02e
 E
 src/data/projects.txt,6\8\687d6fc3a6560c4a055fb9c45caa4e5646689123
+>
+Omega Corp.iml,d\c\dc7d5aec539058ef7c33f1b5b5b8fb890d4d36bd
+J
+src/ui/DashboardPanel.java,1\c\1c33487caeca8437f9e7f5b5eb6e5451158bb300
+B
+src/ui/MainUI.java,d\6\d6078d479eac089450eb0baa86efb1d8f6b1a97e

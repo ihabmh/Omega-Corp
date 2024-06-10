@@ -1,4 +1,4 @@
-public class HumanRes implements Resource{
+public class HumanRes{
 
     private String name;
     private String jobTitle;

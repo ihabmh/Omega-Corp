@@ -3,9 +3,9 @@ package ui;
 import javax.swing.*;
 import java.awt.*;
 
-public class DashboardUI extends JFrame {
+public class MainUI extends JFrame {
 
-    public DashboardUI() {
+    public MainUI() {
         setTitle("Omega");
         setSize(1200, 800);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -82,7 +82,7 @@ public class DashboardUI extends JFrame {
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {
-            DashboardUI frame = new DashboardUI();
+            MainUI frame = new MainUI();
             frame.setVisible(true);
         });
     }

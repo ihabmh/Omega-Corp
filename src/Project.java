@@ -11,12 +11,9 @@ public class Project {
     private double cost;
     private Duration duration;
 
-    public void addTask(Task task) {
-        tasks.add(task);
-    }
+
 
     // public int projectsCount()
-
 
 
 
