@@ -1,5 +1,7 @@
 package ui;
 
+import ui.Comps.FilterPanel;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -49,9 +51,9 @@ public class MainUI extends JFrame {
         topPanel.setBackground(Color.decode("#FFFEF1"));
         topPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
-        JTextField searchField = new JTextField();
-        searchField.setPreferredSize(new Dimension(300, 30));
-        topPanel.add(searchField, BorderLayout.CENTER);
+//        JTextField searchField = new JTextField();
+//        searchField.setPreferredSize(new Dimension(300, 30));
+        topPanel.add(new FilterPanel(), BorderLayout.CENTER);
 
         JButton createProjectButton = new JButton("Create Project");
         createProjectButton.setBackground(Color.BLACK);
@@ -59,8 +61,13 @@ public class MainUI extends JFrame {
 
         mainPanel.add(topPanel, BorderLayout.NORTH);
 
-        // Add dashboard panel
-        mainPanel.add(new DashboardPanel(), BorderLayout.CENTER);
+        // Change Panels
+
+        mainPanel.add(new AddProcessPanel(), BorderLayout.CENTER);
+//        mainPanel.add(new ProcessPanel(), BorderLayout.CENTER);
+//        mainPanel.add(new ProjectCreationPanel(), BorderLayout.CENTER);
+//        mainPanel.add(new ProjectPanel(), BorderLayout.CENTER);
+//        mainPanel.add(new DashboardPanel(), BorderLayout.CENTER);
 
         getContentPane().setLayout(new BorderLayout());
         getContentPane().add(sidebar, BorderLayout.WEST);

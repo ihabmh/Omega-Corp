@@ -12,7 +12,7 @@ public class DashboardPanel extends JPanel {
 
         JPanel headerPanel = new JPanel(new BorderLayout());
         headerPanel.setBackground(Color.decode("#FFFEF1"));
-        headerPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0)); // Add 10 pixels margin below
+        headerPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
 
         JLabel contentTitle = new JLabel("Dashboard", SwingConstants.LEFT);
         Font currentFont = contentTitle.getFont();
@@ -29,7 +29,7 @@ public class DashboardPanel extends JPanel {
         contentPanel.setBackground(Color.decode("#FFFEF1"));
         contentPanel.setLayout(new GridLayout(5, 1, 20, 20));
 
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 5; i++) {
             JPanel card = new JPanel();
             card.setBackground(new Color(230, 230, 220));
             contentPanel.add(card);
