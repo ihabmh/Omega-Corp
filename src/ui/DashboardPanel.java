@@ -1,5 +1,7 @@
 package ui;
 
+import ui.Comps.ProjectCardPanel;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -10,13 +12,13 @@ public class DashboardPanel extends JPanel {
         setLayout(new BorderLayout());
         setBorder(BorderFactory.createEmptyBorder(10, 20, 20, 20));
 
+
         JPanel headerPanel = new JPanel(new BorderLayout());
         headerPanel.setBackground(Color.decode("#FFFEF1"));
         headerPanel.setBorder(BorderFactory.createEmptyBorder(0, 0, 10, 0));
 
         JLabel contentTitle = new JLabel("Dashboard", SwingConstants.LEFT);
-        Font currentFont = contentTitle.getFont();
-        contentTitle.setFont(currentFont.deriveFont(Font.BOLD));
+        contentTitle.setFont(new Font("Arial", Font.BOLD, 20));
 
         JButton createProjectButtonTitle = new JButton("Create Project");
         createProjectButtonTitle.setBackground(Color.BLACK);
@@ -27,12 +29,11 @@ public class DashboardPanel extends JPanel {
 
         JPanel contentPanel = new JPanel();
         contentPanel.setBackground(Color.decode("#FFFEF1"));
-        contentPanel.setLayout(new GridLayout(5, 1, 20, 20));
+        contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.Y_AXIS));
 
         for (int i = 0; i < 5; i++) {
-            JPanel card = new JPanel();
-            card.setBackground(new Color(230, 230, 220));
-            contentPanel.add(card);
+            contentPanel.add(new ProjectCardPanel());
+            contentPanel.add(Box.createVerticalStrut(20));
         }
 
         add(headerPanel, BorderLayout.NORTH);

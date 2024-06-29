@@ -1,4 +1,4 @@
-package classes;
+import classes.Resource;
 
 public class MaterialRes implements Resource {
     private int id;

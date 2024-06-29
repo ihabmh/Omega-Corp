@@ -1,9 +1,4 @@
-import classes.*;
 import java.util.Scanner;
-import classes.EquipmentResource;
-import classes.MaterialRes;
-import classes.HumanResource;
-import classes.Process;
 
 public class Main {
     public static void main(String[] args) {

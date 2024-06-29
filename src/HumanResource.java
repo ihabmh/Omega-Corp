@@ -1,5 +1,3 @@
-package classes;
-
 public class HumanResource {
     private int id;
     private String name;

@@ -1,6 +1,4 @@
 
-A
-src/HumanRes.java,2\e\2ee61e00f86d90c6c673e419a32bbff764fa480c
 =
 src/Main.java,9\2\924f089edb4af5ee45c8a9d1129cd28e2b368138
 @
@@ -31,8 +29,6 @@ I
 src/ui/Comps/HrPanel.java,7\8\78279401e1d80377a19ebb9a3c57667205f3ac8c
 I
 src/ui/Comps/MrPanel.java,9\2\92d46957ebcdabcef7c6662ed36e6cff895cbb51
-G
-src/ui/FilterPanel.java,d\5\d5d1fb7cf6b7c2434707b5a80cb70cfa7e844de3
 K
 src/ui/AddProcessPanel.java,0\3\033c11bedb128c80c1df8d56d0f3049dfb1e12a7
 O
@@ -41,3 +37,11 @@ K
 src/ui/Comps/ListPanel.java,7\9\793524dcdd74ccc301b8f6635aa3c5b0852534cd
 M
 src/ui/Comps/FilterPanel.java,0\f\0fe6cb2d8f077733d3cb66dc68925454a5082e64
+D
+src/MaterialRes.java,2\1\21da76666527bd27a5e2993619d28beb83729b5f
+@
+src/Process.java,5\d\5db079a490fa611fe5ce4f4d6c3eba6c603563d6
+F
+src/HumanResource.java,2\1\21493b8207a173a6c355e63403807cb355a4828b
+R
+"src/ui/Comps/ProjectCardPanel.java,b\a\baa2d2f28ff1f4a25810a288515604c567d70b0a

@@ -63,11 +63,11 @@ public class MainUI extends JFrame {
 
         // Change Panels
 
-        mainPanel.add(new AddProcessPanel(), BorderLayout.CENTER);
+//        mainPanel.add(new AddProcessPanel(), BorderLayout.CENTER);
 //        mainPanel.add(new ProcessPanel(), BorderLayout.CENTER);
 //        mainPanel.add(new ProjectCreationPanel(), BorderLayout.CENTER);
 //        mainPanel.add(new ProjectPanel(), BorderLayout.CENTER);
-//        mainPanel.add(new DashboardPanel(), BorderLayout.CENTER);
+        mainPanel.add(new DashboardPanel(), BorderLayout.CENTER);
 
         getContentPane().setLayout(new BorderLayout());
         getContentPane().add(sidebar, BorderLayout.WEST);

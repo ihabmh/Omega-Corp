@@ -15,12 +15,16 @@ public class FilterPanel extends JPanel {
     public FilterPanel() {
         setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
         setMaximumSize(new Dimension(300, 150));
+        setBackground(Color.decode("#FFFEF1"));
 
         // Initialize combo boxes
         projectComboBox = new JComboBox<>(new String[]{"Select Project", "Project A", "Project B"});
         taskComboBox = new JComboBox<>(new String[]{"Select Task"});
         processComboBox = new JComboBox<>(new String[]{"Select Process"});
         searchButton = new JButton("Search");
+        searchButton.setBackground(Color.BLACK);
+        searchButton.setForeground(Color.WHITE);
+        searchButton.setBorderPainted(false);
 
         // Disable task and process combo boxes initially
         taskComboBox.setEnabled(false);
@@ -56,8 +60,11 @@ public class FilterPanel extends JPanel {
 
         // Add components to panel
         add(projectComboBox);
+        add(Box.createHorizontalStrut(5));
         add(taskComboBox);
+        add(Box.createHorizontalStrut(5));
         add(processComboBox);
+        add(Box.createHorizontalStrut(5));
         add(searchButton);
 
         // Add search button action listener
