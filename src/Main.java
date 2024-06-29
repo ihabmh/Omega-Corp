@@ -20,9 +20,9 @@ public class Main {
 
         Process process = new Process( 1 , "Construction") ;
 
-        process.addResource(equipment);
-        process.addResource(material);
-        process.assignEmployee(human);
+//        process.addResource(equipment);
+//        process.addResource(material);
+//        process.assignEmployee(human);
 
         System.out.println("Total Cost: " + process.calculateCost());
         System.out.println("Total Duration: " + process.calculateDuration());

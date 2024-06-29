@@ -45,3 +45,9 @@ F
 src/HumanResource.java,2\1\21493b8207a173a6c355e63403807cb355a4828b
 R
 "src/ui/Comps/ProjectCardPanel.java,b\a\baa2d2f28ff1f4a25810a288515604c567d70b0a
+J
+src/EquipmentResource.java,8\9\89d422eed43f802397ce1db11f71113746ddfba0
+A
+src/Resourcr.java,3\5\35fa296d86d8d2cb2e129293ed54c69dbb580312
+A
+src/Resource.java,3\1\31faea02cf6ae5050212ed04f7ef894712c3d095

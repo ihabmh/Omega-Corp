@@ -1,4 +1,4 @@
-import classes.Resource;
+
 
 public class EquipmentResource implements Resource {
     private int id;

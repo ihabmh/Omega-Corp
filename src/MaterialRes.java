@@ -1,6 +1,6 @@
-import classes.Resource;
 
-public class MaterialRes implements Resource {
+
+public class MaterialRes {
     private int id;
     private String name;
     private double costPerUnit;
@@ -11,12 +11,12 @@ public class MaterialRes implements Resource {
         this.costPerUnit = costPerUnit;
     }
 
-    @Override
+
     public double calculateMaterialCost(int units) {
         return units * costPerUnit;
     }
 
-    @Override
+
     public int getDefaultDuration(int units) {
         // Example logic: 10 units of material takes 1 hour
         return units / 10;
