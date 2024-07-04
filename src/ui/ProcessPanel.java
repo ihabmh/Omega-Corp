@@ -11,7 +11,7 @@ public class ProcessPanel extends JPanel {
     JLabel processName;
     JPanel content;
 
-    public ProcessPanel() {
+    public ProcessPanel(JPanel panel) {
         setBackground(Color.decode("#FFFEF1"));
         setLayout(new BorderLayout());
         setBorder(BorderFactory.createEmptyBorder(10, 20, 20, 20));
@@ -39,5 +39,10 @@ public class ProcessPanel extends JPanel {
 
         add(header, BorderLayout.NORTH);
         add(content, BorderLayout.CENTER);
+
+        backBtn.addActionListener(e -> {
+            CardLayout cardLayout = (CardLayout) panel.getLayout();
+            cardLayout.show(panel, "projectPanel");
+        });
     }
 }

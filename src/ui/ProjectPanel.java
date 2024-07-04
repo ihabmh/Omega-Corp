@@ -9,11 +9,12 @@ public class ProjectPanel extends JPanel {
     private JPanel headerPanel;
     private JPanel btnsPanel;
     private JLabel contentTitle;
-    private JButton AddTaskBtn;
+    private JButton addTaskBtn;
+    private JButton backBtn;
     private JPanel contentPanel;
     private JPanel statusPanel;
 
-    public ProjectPanel() {
+    public ProjectPanel(JPanel panel, int id) {
         setBackground(Color.decode("#FFFEF1"));
         setLayout(new BorderLayout());
         setBorder(BorderFactory.createEmptyBorder(10, 20, 20, 20));
@@ -28,12 +29,18 @@ public class ProjectPanel extends JPanel {
         contentTitle = new JLabel("Project Name", SwingConstants.LEFT);
         contentTitle.setFont(new Font("Arial", Font.BOLD, 20));
 
-        AddTaskBtn = new JButton("+ Add Task");
-        AddTaskBtn.setBackground(Color.BLACK);
-        AddTaskBtn.setForeground(Color.WHITE);
-        AddTaskBtn.setBorderPainted(false);
+        addTaskBtn = new JButton("+ Task");
+        addTaskBtn.setBackground(Color.BLACK);
+        addTaskBtn.setForeground(Color.WHITE);
+        addTaskBtn.setBorderPainted(false);
 
-        btnsPanel.add(AddTaskBtn);
+        backBtn = new JButton("Back");
+        backBtn.setBackground(Color.decode("#E0FF25"));
+        backBtn.setForeground(Color.BLACK);
+        backBtn.setBorderPainted(false);
+
+        btnsPanel.add(backBtn);
+        btnsPanel.add(addTaskBtn);
 
         headerPanel.add(contentTitle, BorderLayout.WEST);
         headerPanel.add(btnsPanel, BorderLayout.EAST);
@@ -43,10 +50,10 @@ public class ProjectPanel extends JPanel {
         contentPanel.setBackground(Color.decode("#FFFEF1"));
 
         // Add your TaskPanel instances here
-        contentPanel.add(new TaskPanel());
-        contentPanel.add(new TaskPanel());
-        contentPanel.add(new TaskPanel());
-        contentPanel.add(new TaskPanel());
+        contentPanel.add(new TaskPanel(panel));
+        contentPanel.add(new TaskPanel(panel));
+        contentPanel.add(new TaskPanel(panel));
+        contentPanel.add(new TaskPanel(panel));
 
         // Wrap contentPanel in a JScrollPane
         JScrollPane scrollPane = new JScrollPane(contentPanel);
@@ -79,5 +86,10 @@ public class ProjectPanel extends JPanel {
         add(headerPanel, BorderLayout.NORTH);
         add(scrollPane, BorderLayout.CENTER);
         add(statusPanel, BorderLayout.SOUTH);
+
+        backBtn.addActionListener(e -> {
+            CardLayout cardLayout = (CardLayout) panel.getLayout();
+            cardLayout.show(panel, "dashboardPanel");
+        });
     }
 }

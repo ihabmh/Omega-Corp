@@ -1,0 +1,17 @@
+| ID | Name          | Cost/Unit |
+|----|---------------|-----------|
+| 1  | 3D Printer    | $500.00   |
+| 2  | Laser Cutter  | $750.00   |
+| 3  | CNC Machine   | $1200.00  |
+| 4  | Soldering Iron| $25.00    |
+| 5  | Drill Press   | $200.00   |
+| 6  | Multimeter    | $50.00    |
+| 7  | Oscilloscope  | $400.00   |
+| 8  | Power Supply  | $150.00   |
+| 9  | Heat Gun      | $30.00    |
+| 10 | Vinyl Cutter  | $350.00   |
+| 11 | Router        | $100.00   |
+| 12 | Bench Grinder | $80.00    |
+| 13 | Air Compressor| $250.00   |
+| 14 | Band Saw      | $450.00   |
+| 15 | Table Saw     | $600.00   |

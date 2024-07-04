@@ -13,7 +13,7 @@ public class MrPanel extends JPanel {
 
 
 
-        String[] columnNames = {"ID", "Resource Name", "Count", "Cost"};
+        String[] columnNames = {"ID", "model.Resource Name", "Count", "Cost"};
         String[][] data = {
                 {"1", "Kundan Kumar Jha", "1", "1000ms"},
                 {"2", "Anand Jha", "1", "1000ms"}

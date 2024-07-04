@@ -16,7 +16,7 @@ public class AddProcessPanel extends JPanel {
     private ListPanel materialResourcesListPanel;
     private ListPanel equipmentResourcesListPanel;
 
-    public AddProcessPanel() {
+    public AddProcessPanel(JPanel panel) {
         // Initialize the panel settings
         setBackground(Color.decode("#FFFEF1"));
         setLayout(new BorderLayout());
@@ -97,11 +97,11 @@ public class AddProcessPanel extends JPanel {
                 new String[]{"Choose", "Department A", "Department B", "Manager"},
                 humanResourcesListPanel.getListModel());
 
-        ResourcePanel materialResourcesPanel = new ResourcePanel("Material Resource:",
+        ResourcePanel materialResourcesPanel = new ResourcePanel("Material Resources:",
                 new String[]{"Choose", "Material A", "Material B", "Material C"},
                 materialResourcesListPanel.getListModel());
 
-        ResourcePanel equipmentResourcesPanel = new ResourcePanel("Equipment Resource:",
+        ResourcePanel equipmentResourcesPanel = new ResourcePanel("Equipment Resources:",
                 new String[]{"Choose", "Equipment A", "Equipment B", "Equipment C"},
                 equipmentResourcesListPanel.getListModel());
 
@@ -131,5 +131,10 @@ public class AddProcessPanel extends JPanel {
         add(headerPanel, BorderLayout.NORTH);
         add(contentPanel, BorderLayout.WEST);
         add(listsPanel, BorderLayout.EAST);
+
+        backBtn.addActionListener(e -> {
+            CardLayout cardLayout = (CardLayout) panel.getLayout();
+            cardLayout.show(panel, "projectPanel");
+        });
     }
 }

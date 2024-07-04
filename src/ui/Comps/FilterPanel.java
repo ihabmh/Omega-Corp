@@ -18,9 +18,9 @@ public class FilterPanel extends JPanel {
         setBackground(Color.decode("#FFFEF1"));
 
         // Initialize combo boxes
-        projectComboBox = new JComboBox<>(new String[]{"Select Project", "Project A", "Project B"});
-        taskComboBox = new JComboBox<>(new String[]{"Select Task"});
-        processComboBox = new JComboBox<>(new String[]{"Select Process"});
+        projectComboBox = new JComboBox<>(new String[]{"Project", "Project A", "Project B"});
+        taskComboBox = new JComboBox<>(new String[]{"Task"});
+        processComboBox = new JComboBox<>(new String[]{"Process"});
         searchButton = new JButton("Search");
         searchButton.setBackground(Color.BLACK);
         searchButton.setForeground(Color.WHITE);
@@ -37,7 +37,7 @@ public class FilterPanel extends JPanel {
                 if (projectComboBox.getSelectedIndex() > 0) {
                     taskComboBox.setEnabled(true);
                     // Update taskComboBox items based on selected project
-                    taskComboBox.setModel(new DefaultComboBoxModel<>(new String[]{"Select Task", "Task 1", "Task 2"}));
+                    taskComboBox.setModel(new DefaultComboBoxModel<>(new String[]{"Task", "Task 1", "Task 2"}));
                 } else {
                     taskComboBox.setEnabled(false);
                     processComboBox.setEnabled(false);

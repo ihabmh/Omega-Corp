@@ -1,39 +1,92 @@
-import java.util.Scanner;
+import model.EquipmentResource;
+import model.HumanResource;
+import model.MaterialResource;
+import model.Process;
+import model.Task;
+import model.Project;
+import reader.*;
+import ui.MainUI;
+
+import java.util.List;
+import java.util.Map;
 
 public class Main {
     public static void main(String[] args) {
-        EquipmentResource equipment = new EquipmentResource(1, "Excavator", 1500.0);
-        MaterialRes material = new MaterialRes(2, "Cement", 100.0);
 
-        // Example of user input through a scanner (simulating a GUI input)
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter total hours worked by the human resource: ");
-        int totalHoursWorked = scanner.nextInt();
 
-        HumanResource human = new HumanResource(3, "John Doe", "Engineer", 50.0, totalHoursWorked);
+        // read material resource
+        MRReader.MaterialResourceData data = MRReader.readMaterialResources("src\\data\\material-resource.txt");
+        List<MaterialResource> materialResourceList = data.materialResourceList;
+        Map<Integer, MaterialResource> materialResourceMap = data.materialResourceMap;
+        //test
+//        System.out.println("Number of materials: " + materialResourceList.size());
+//        System.out.println("Material with ID 1: " + materialResourceMap.get(1).getName());
 
-        System.out.println("Equipment Cost for 10 units: " + equipment.calculateMaterialCost(10));
-        System.out.println("Material Cost for 20 units: " + material.calculateMaterialCost(20));
-        System.out.println("Human Resource ID: " + human.getId());
-        System.out.println("Human Resource Hourly Rate: " + human.getHourlyRate());
-        System.out.println("Human Resource Total Hours Worked: " + human.getTotalHoursWorked());
+        // read equipment resource
+        ERReader.EquipmentResourceData erData = ERReader.readEquipmentResources("src\\data\\equipment-resource.txt");
+        List<EquipmentResource> equipmentResourceList = erData.equipmentResourceList;
+        Map<Integer, EquipmentResource> equipmentResourceMap = erData.equipmentResourceMap;
 
-        Process process = new Process( 1 , "Construction") ;
+        // test
+//        System.out.println("\nEquipment Resources:");
+//        System.out.println("Total number of equipment: " + equipmentResourceList.size());
+//        System.out.println("First equipment: " + equipmentResourceMap.get(1).getName());
+//        System.out.println("Last equipment: " + equipmentResourceMap.get(equipmentResourceList.size()).getName());
 
-//        process.addResource(equipment);
-//        process.addResource(material);
-//        process.assignEmployee(human);
 
-        System.out.println("Total Cost: " + process.calculateCost());
-        System.out.println("Total Duration: " + process.calculateDuration());
-        System.out.println("Process Status: " + process.getStatus());
+        HRReader.HumanResourceData hrData = HRReader.readHumanResources("src\\data\\human-resource.txt");
+        List<HumanResource> humanResourceList = hrData.humanResourceList;
+        Map<Integer, HumanResource> humanResourceMap = hrData.humanResourceMap;
 
-        process.updateStatus("In Progress");
-        System.out.println("Updated Process Status: " + process.getStatus());
+        // test
+//        System.out.println("\nAll Human Resources:");
+//        for (HumanResource resource : humanResourceList) {
+//            System.out.println(resource);
+//        }
 
-        // Print the process details
-        System.out.println(process);
 
-        scanner.close();
+        // read process
+        ProcessReader.ProcessData processData = ProcessReader.readProcesses("src\\data\\process.txt",
+                humanResourceMap,
+                materialResourceMap,
+                equipmentResourceMap);
+        List<Process> processList = processData.processList;
+        Map<Integer, Process> processMap = processData.processMap;
+
+        // test
+//        System.out.println("\nAll Processes:");
+//        for (Process process : processList) {
+//            System.out.println(process.getMaterialResources().getFirst().getName());
+//        }
+
+
+        // Read Tasks
+        TaskReader.TaskData taskData = TaskReader.readTasks("src\\data\\task.txt", processMap);
+        List<Task> taskList = taskData.taskList;
+        Map<Integer, Task> taskMap = taskData.taskMap;
+        // Example of iterating through all tasks
+//        System.out.println("\nAll Tasks:");
+//        for (Task task : taskList) {
+//            System.out.println(task.getProcesses());
+//        }
+
+        ProjectReader.ProjectData projectData = ProjectReader.readProjects("src\\data\\project.txt", taskMap);
+        List<Project> projectList = projectData.projectList;
+        Map<Integer, Project> projectMap = projectData.projectMap;
+        // Example of iterating through all projects
+//        System.out.println("\nAll Projects:");
+//        for (Project p : projectList) {
+//            System.out.println(p.getTasks());
+//        }
+
+
+
+
+        String[] uiArgs = {}; // You can pass arguments if needed
+        MainUI.main(uiArgs);
+        MainUI mainUI = new MainUI();
+
+
+
     }
 }

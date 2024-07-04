@@ -13,7 +13,7 @@ public class TaskPanel extends JPanel {
     JButton detailsBtn;
     JButton addProcess;
 
-    public TaskPanel() {
+    public TaskPanel(JPanel panel) {
         setBackground(Color.decode("#FFFEF1"));
         setLayout(new BorderLayout());
 
@@ -72,6 +72,18 @@ public class TaskPanel extends JPanel {
         action.add(addProcess);
         action.add(Box.createVerticalGlue());
         add(action, BorderLayout.EAST);
+
+
+        detailsBtn.addActionListener(e -> {
+            CardLayout cardLayout = (CardLayout) panel.getLayout();
+            cardLayout.show(panel, "processPanel");
+        });
+
+        addProcess.addActionListener(e -> {
+            CardLayout cardLayout = (CardLayout) panel.getLayout();
+            cardLayout.show(panel, "addProcessPanel");
+        });
+
 
 
     }

@@ -5,7 +5,16 @@ import ui.Comps.FilterPanel;
 import javax.swing.*;
 import java.awt.*;
 
+
 public class MainUI extends JFrame {
+
+    AddProcessPanel addProcessPanel;
+    ProcessPanel processPanel;
+    ProjectCreationPanel projectCreationPanel;
+    ProjectPanel projectPanel;
+    DashboardPanel dashboardPanel;
+
+
 
     public MainUI() {
         setTitle("Omega");
@@ -55,7 +64,7 @@ public class MainUI extends JFrame {
 //        searchField.setPreferredSize(new Dimension(300, 30));
         topPanel.add(new FilterPanel(), BorderLayout.CENTER);
 
-        JButton createProjectButton = new JButton("Create Project");
+        JButton createProjectButton = new JButton("Project");
         createProjectButton.setBackground(Color.BLACK);
         createProjectButton.setForeground(Color.WHITE);
 
@@ -63,15 +72,35 @@ public class MainUI extends JFrame {
 
         // Change Panels
 
-//        mainPanel.add(new AddProcessPanel(), BorderLayout.CENTER);
-//        mainPanel.add(new ProcessPanel(), BorderLayout.CENTER);
-//        mainPanel.add(new ProjectCreationPanel(), BorderLayout.CENTER);
-//        mainPanel.add(new ProjectPanel(), BorderLayout.CENTER);
-        mainPanel.add(new DashboardPanel(), BorderLayout.CENTER);
+
+        JPanel shownPanel = new JPanel();
+        shownPanel.setLayout(new CardLayout());
+
+
+
+        addProcessPanel = new AddProcessPanel(shownPanel);
+        processPanel = new ProcessPanel(shownPanel);
+        projectCreationPanel = new ProjectCreationPanel(shownPanel);
+        projectPanel = new ProjectPanel(shownPanel, 1);
+        dashboardPanel = new DashboardPanel(shownPanel);
+
+
+        shownPanel.add(addProcessPanel, "addProcessPanel");
+        shownPanel.add(processPanel, "processPanel");
+        shownPanel.add(projectPanel, "projectPanel");
+        shownPanel.add(dashboardPanel, "dashboardPanel");
+        shownPanel.add(projectCreationPanel, "projectCreationPanel");
+
+        CardLayout cardLayout = (CardLayout) shownPanel.getLayout();
+        cardLayout.show(shownPanel, "dashboardPanel");
+
+        mainPanel.add(shownPanel, BorderLayout.CENTER);
+
 
         getContentPane().setLayout(new BorderLayout());
         getContentPane().add(sidebar, BorderLayout.WEST);
         getContentPane().add(mainPanel, BorderLayout.CENTER);
+
     }
 
     private JButton createSidebarButton(String text, boolean selected) {
@@ -86,6 +115,11 @@ public class MainUI extends JFrame {
         button.setFont(button.getFont().deriveFont(Font.BOLD, 12));
         return button;
     }
+
+
+
+
+
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {

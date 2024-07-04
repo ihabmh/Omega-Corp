@@ -1,0 +1,7 @@
+ID | Process Name            | Human Resources | Material Resources | Equipment Resources | Duration | Status  | Cost
+---|-------------------------|------------------|--------------------|---------------------|----------|---------|-----
+1  | Product Development    | [1,2,3]          | [1,2,3]            | [1,2,3]             | 10000    | Done    | 10000
+2  | Prototype Testing      | [4,5]            | [4,5]              | [4,5]               | 5000     | Ongoing | 1925
+3  | Market Research        | [6,7]            | [8/5]              | [6,7]               | 6000     | Planned | 3890
+4  | Assembly Line Setup    | [8,9]            | [2,5]              | [8,9]               | 8000     | Done    | 4330
+5  | User Experience Design | [10,11]          | [1/4]              | [10,11]             | 7000     | Done    | 2700

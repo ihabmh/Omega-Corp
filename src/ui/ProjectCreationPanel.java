@@ -2,6 +2,10 @@ package ui;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import model.Project;
+import reader.ProjectReader;
 
 public class ProjectCreationPanel extends JPanel {
     JPanel headerPanel;
@@ -14,7 +18,7 @@ public class ProjectCreationPanel extends JPanel {
     JLabel nameLabel;
     JTextField nameTF;
 
-    public ProjectCreationPanel() {
+    public ProjectCreationPanel(JPanel panel) {
         setBackground(Color.decode("#FFFEF1"));
         setLayout(new BorderLayout());
         setBorder(BorderFactory.createEmptyBorder(10, 20, 20, 20));
@@ -68,6 +72,37 @@ public class ProjectCreationPanel extends JPanel {
 
         add(headerPanel, BorderLayout.NORTH);
         add(contentPanel, BorderLayout.CENTER);
+
+
+
+        cancelBtn.addActionListener(e -> {
+            CardLayout cardLayout = (CardLayout) panel.getLayout();
+
+            cardLayout.show(panel, "dashboardPanel");
+        });
+
+        createBtn.addActionListener(e -> {
+
+            String title = nameTF.getText().trim(); // Trim whitespaces
+
+            // Check if title is empty
+            if (title.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Please enter a project name.", "Empty Name", JOptionPane.ERROR_MESSAGE);
+                return; // Exit the method if title is empty
+            }
+
+
+            int confirmation = JOptionPane.showConfirmDialog(null,
+                    "Are you sure you want to create a project named \"" + title + "\"?",
+                    "Confirm Project Creation", JOptionPane.YES_NO_OPTION);
+
+            if (confirmation == JOptionPane.YES_OPTION) {
+                Project newProject = new Project(16, "title", null);
+                CardLayout cardLayout = (CardLayout) panel.getLayout();
+                cardLayout.show(panel, "dashboardPanel");
+            }
+        });
     }
+
 
 }

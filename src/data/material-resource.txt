@@ -1,0 +1,18 @@
+| ID | Name        | Cost/Unit |
+|----|-------------|-----------|
+| 1  | Plastic     | $2.50     |
+| 2  | Wood        | $3.00     |
+| 3  | Metal       | $5.00     |
+| 4  | Glass       | $4.50     |
+| 5  | Fabric      | $2.00     |
+| 6  | Rubber      | $1.50     |
+| 7  | Ceramic     | $6.00     |
+| 8  | Foam        | $1.75     |
+| 9  | Leather     | $7.00     |
+| 10 | Paper       | $0.50     |
+| 11 | Composite   | $8.00     |
+| 12 | Cardboard   | $0.75     |
+| 13 | Silicone    | $3.50     |
+| 14 | Cork        | $2.25     |
+| 15 | Bamboo      | $3.75     |
+

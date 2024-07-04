@@ -1,12 +1,6 @@
 
 =
 src/Main.java,9\2\924f089edb4af5ee45c8a9d1129cd28e2b368138
-@
-src/Project.java,b\7\b77479eb8805310d3361da87e042cf2fe1730ffa
-=
-src/Task.java,1\5\1563d9cc43d5cc4a5c559a91e0489b8331ce260c
-A
-src/TaskName.java,5\0\5038b707376f4b4b0631a381f985c301b875c02e
 E
 src/data/projects.txt,6\8\687d6fc3a6560c4a055fb9c45caa4e5646689123
 >
@@ -37,17 +31,45 @@ K
 src/ui/Comps/ListPanel.java,7\9\793524dcdd74ccc301b8f6635aa3c5b0852534cd
 M
 src/ui/Comps/FilterPanel.java,0\f\0fe6cb2d8f077733d3cb66dc68925454a5082e64
-D
-src/MaterialRes.java,2\1\21da76666527bd27a5e2993619d28beb83729b5f
-@
-src/Process.java,5\d\5db079a490fa611fe5ce4f4d6c3eba6c603563d6
-F
-src/HumanResource.java,2\1\21493b8207a173a6c355e63403807cb355a4828b
 R
 "src/ui/Comps/ProjectCardPanel.java,b\a\baa2d2f28ff1f4a25810a288515604c567d70b0a
+D
+src/data/process.txt,7\a\7afa6182f36177990ceff82e3bdd9dde9b863cfb
+K
+src/data/human-resource.txt,7\0\70b02c512846225e3c09aca73a0be9105cc805d7
+A
+src/data/Task.txt,e\d\ed2f6132cdb0aed9eff318a854c078c70af01399
+A
+src/data/task.txt,2\6\269e27193f0feaa825a86f95b1ffe51c52390dea
+N
+src/data/material-resource.txt,c\e\ce2fe1e9f4ee73b950af71ca4beefb084c0b865c
+F
+src/model/Process.java,6\6\665824cd0734119a943894f716be1494b7c6dafc
+G
+src/model/Resource.java,8\a\8ab656a3e6d0d308f415518ad30c919b9e451712
+P
+ src/model/EquipmentResource.java,7\8\78618ea7e4fef7206bfaa73bfd3f1ad8caf3ac69
+C
+src/model/Task.java,f\8\f832a384be168e161b98ea99b51d3c78b15a5a6b
+O
+src/model/MaterialResource.java,8\8\88bb5dd2b9568a5ce667ed9069f24ecd70c38c21
+L
+src/model/HumanResource.java,c\6\c61bc161afec95cd9b5d713acfb4bb711f44d1c2
+H
+src/reader/MRReader.java,8\d\8dbb232d0c870697377137c47110a7f508234324
+H
+src/reader/ERReader.java,b\5\b5ff18de8fc5a9b56f84e98904272ceacb65c2bb
+O
+src/data/equipment-resource.txt,a\0\a07af98afad611a69fbcb90593ef39b785c79c4e
+H
+src/reader/HRReader.java,2\b\2b348f280580b148d44a52d85e4deac5cf9a2fb5
+M
+src/reader/ProcessReader.java,4\e\4e102201ab76cbb789642014d4debacfa3f74756
 J
-src/EquipmentResource.java,8\9\89d422eed43f802397ce1db11f71113746ddfba0
-A
-src/Resourcr.java,3\5\35fa296d86d8d2cb2e129293ed54c69dbb580312
-A
-src/Resource.java,3\1\31faea02cf6ae5050212ed04f7ef894712c3d095
+src/reader/TaskReader.java,2\6\26c3e603fcf04973a7846a427947e1dc45df3e2a
+D
+src/data/project.txt,b\e\bec89b5d7dc7b7ee2541859a3089c233715cd2be
+F
+src/model/Project.java,0\1\019cea73aa8214fbefa84743800130cba09ed9ac
+M
+src/reader/ProjectReader.java,a\f\af9a1a3e80c413ef52c78f7e5b55662c0a08022d

@@ -12,7 +12,7 @@ public class ProjectCardPanel extends JPanel {
 
 
 
-    public ProjectCardPanel() {
+    public ProjectCardPanel(JPanel panel) {
         setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
         setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
         setBackground(Color.decode("#E6E5D9"));
@@ -35,6 +35,11 @@ public class ProjectCardPanel extends JPanel {
         add(Box.createHorizontalGlue());
         add(viewBtn);
 
+
+        viewBtn.addActionListener(e -> {
+            CardLayout cardLayout = (CardLayout) panel.getLayout();
+            cardLayout.show(panel, "projectPanel");
+        });
 
     }
 }
