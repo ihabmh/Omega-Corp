@@ -15,9 +15,9 @@ public class Main {
 
 
         // read material resource
-        MRReader.MaterialResourceData data = MRReader.readMaterialResources("src\\data\\material-resource.txt");
-        List<MaterialResource> materialResourceList = data.materialResourceList;
-        Map<Integer, MaterialResource> materialResourceMap = data.materialResourceMap;
+        MRReader.MaterialResourceData mrData = MRReader.readMaterialResources("src\\data\\material-resource.txt");
+        List<MaterialResource> materialResourceList = mrData.materialResourceList;
+        Map<Integer, MaterialResource> materialResourceMap = mrData.materialResourceMap;
         //test
 //        System.out.println("Number of materials: " + materialResourceList.size());
 //        System.out.println("Material with ID 1: " + materialResourceMap.get(1).getName());
@@ -79,10 +79,12 @@ public class Main {
 //            System.out.println(p.getTasks());
 //        }
 
+        Project.initializeExistingProjects(projectList);
 
 
 
-        String[] uiArgs = {}; // You can pass arguments if needed
+
+        String[] uiArgs = {};
         MainUI.main(uiArgs);
         MainUI mainUI = new MainUI();
 

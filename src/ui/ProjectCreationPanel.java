@@ -2,10 +2,8 @@ package ui;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
 import model.Project;
-import reader.ProjectReader;
 
 public class ProjectCreationPanel extends JPanel {
     JPanel headerPanel;
@@ -83,23 +81,31 @@ public class ProjectCreationPanel extends JPanel {
 
         createBtn.addActionListener(e -> {
 
-            String title = nameTF.getText().trim(); // Trim whitespaces
+            String name = nameTF.getText().trim(); // Trim whitespaces
 
             // Check if title is empty
-            if (title.isEmpty()) {
+            if (name.isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Please enter a project name.", "Empty Name", JOptionPane.ERROR_MESSAGE);
                 return; // Exit the method if title is empty
             }
 
 
             int confirmation = JOptionPane.showConfirmDialog(null,
-                    "Are you sure you want to create a project named \"" + title + "\"?",
+                    "Are you sure you want to create a project named \"" + name + "\"?",
                     "Confirm Project Creation", JOptionPane.YES_NO_OPTION);
 
             if (confirmation == JOptionPane.YES_OPTION) {
-                Project newProject = new Project(16, "title", null);
+                // id should respect the order
+                Project newProject = Project.createProject(name);
+                nameTF.setText("");
+
+
                 CardLayout cardLayout = (CardLayout) panel.getLayout();
+                DashboardPanel dp = new DashboardPanel(panel);
+                panel.add(dp, "dashboardPanel");
                 cardLayout.show(panel, "dashboardPanel");
+
+
             }
         });
     }

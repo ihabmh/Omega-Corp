@@ -4,6 +4,7 @@ import ui.Comps.*;
 
 import java.awt.*;
 import javax.swing.*;
+import model.Process;
 
 public class ProcessPanel extends JPanel {
     JPanel header;
@@ -11,14 +12,14 @@ public class ProcessPanel extends JPanel {
     JLabel processName;
     JPanel content;
 
-    public ProcessPanel(JPanel panel) {
+    public ProcessPanel(JPanel panel, Process process) {
         setBackground(Color.decode("#FFFEF1"));
         setLayout(new BorderLayout());
         setBorder(BorderFactory.createEmptyBorder(10, 20, 20, 20));
 
         header = new JPanel(new BorderLayout());
         header.setBackground(Color.decode("#FFFEF1"));
-        processName = new JLabel("Process Name");
+        processName = new JLabel(process.getName());
         processName.setFont(new Font("Arial", Font.BOLD, 20));
 
         backBtn = new JButton("Back");
@@ -33,9 +34,9 @@ public class ProcessPanel extends JPanel {
         content.setLayout(new BoxLayout(content, BoxLayout.Y_AXIS));
         content.setBackground(Color.decode("#FFFEF1"));
 
-        content.add(new HrPanel());
-        content.add(new MrPanel());
-        content.add(new ErPanel());
+        content.add(new HrPanel(process));
+        content.add(new MrPanel(process));
+        content.add(new ErPanel(process));
 
         add(header, BorderLayout.NORTH);
         add(content, BorderLayout.CENTER);

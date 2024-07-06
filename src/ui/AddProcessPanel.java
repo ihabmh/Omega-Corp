@@ -1,5 +1,6 @@
 package ui;
 
+import model.Task;
 import ui.Comps.*;
 
 import javax.swing.*;
@@ -16,7 +17,7 @@ public class AddProcessPanel extends JPanel {
     private ListPanel materialResourcesListPanel;
     private ListPanel equipmentResourcesListPanel;
 
-    public AddProcessPanel(JPanel panel) {
+    public AddProcessPanel(JPanel panel, Task task) {
         // Initialize the panel settings
         setBackground(Color.decode("#FFFEF1"));
         setLayout(new BorderLayout());

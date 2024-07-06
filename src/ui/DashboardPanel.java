@@ -3,13 +3,19 @@ package ui;
 import ui.Comps.ProjectCardPanel;
 import ui.ProjectCreationPanel;
 
+import model.Project;
+import reader.ProjectReader;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
 
-public class DashboardPanel extends JPanel {
+public class DashboardPanel extends JPanel{
     private JButton createProjectButton;
+
+
 
     public DashboardPanel(JPanel panel) {
         setBackground(Color.decode("#FFFEF1"));
@@ -35,10 +41,13 @@ public class DashboardPanel extends JPanel {
         contentPanel.setBackground(Color.decode("#FFFEF1"));
         contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.Y_AXIS));
 
-        for (int i = 0; i < 5; i++) {
-            contentPanel.add(new ProjectCardPanel(panel));
+
+
+        for (Project project : Project.getAllProjects()) {
+            contentPanel.add(new ProjectCardPanel(panel, project));
             contentPanel.add(Box.createVerticalStrut(20));
         }
+
 
         add(headerPanel, BorderLayout.NORTH);
         add(contentPanel, BorderLayout.CENTER);
@@ -51,9 +60,9 @@ public class DashboardPanel extends JPanel {
         });
 
 
+
+
     }
-
-
 
 }
 

@@ -5,6 +5,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 
 public class Process {
@@ -54,15 +56,14 @@ public class Process {
 //        this.status = Status.valueOf(newStatus.toUpperCase());
 //    }
 
-    public double calculateCost() {
-        // Assuming you have a method in model.EquipmentResource to calculate cost
-        double totalCost = 0.0;
-        for (EquipmentResource resource : equipmentResources) {
-            totalCost += resource.calculateMaterialCost(10); // Assuming 10 units for each resource
-        }
-        this.cost = totalCost;
-        return totalCost;
-    }
+//    public double calculateCost() {
+//        double totalCost = 0.0;
+//        for (EquipmentResource resource : equipmentResources) {
+//            totalCost += resource.calculateEquipmentCost(10); // Assuming 10 units for each resource
+//        }
+//        this.cost = totalCost;
+//        return totalCost;
+//    }
 
     // Getters and Setters
     public int getId() {
@@ -73,9 +74,15 @@ public class Process {
         return name;
     }
 
-//    public List<HumanResource> getEmployees() {
-//        return HumanResource;
-//    }
+    public List<HumanResource> getEmployees() {
+        return humanResources;
+    }
+    public List<EquipmentResource> getEquipmentResources() {
+        return equipmentResources;
+    }
+    public List<MaterialResource> getMaterialResources() {
+        return materialResources;
+    }
 
     public int getDuration() {
         return duration;
@@ -89,9 +96,7 @@ public class Process {
         return cost;
     }
 
-    public List<MaterialResource> getMaterialResources() {
-        return materialResources;
-    }
+
 
     public void addMaterialResource(MaterialResource resource) {
         materialResources.add(resource);
@@ -103,5 +108,19 @@ public class Process {
         return "model.Process{id=" + id + ", name='" + name + "', duration=" + duration + ", status='" + status + "', cost=" + cost + "}";
     }
 
+    public Map<String, Long> getMaterialResourceCountsByName() {
+        return materialResources.stream()
+                .collect(Collectors.groupingBy(
+                        MaterialResource::getName,
+                        Collectors.counting()
+                ));
+    }
 
+    public Map<String, Long> getEquipmentResourceCountsByName() {
+        return equipmentResources.stream()
+                .collect(Collectors.groupingBy(
+                        EquipmentResource::getName,
+                        Collectors.counting()
+                ));
+    }
 }

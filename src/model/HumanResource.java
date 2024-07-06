@@ -19,18 +19,7 @@ public class HumanResource {
         this.hourlyRate = hourlyRate;
     }
 
-//    public static model.HumanResource fetchHumanResourceById(int id) {
-//        for (model.HumanResource hr : hrList) {
-//            if (hr.getId() == id) {
-//                return hr;
-//            }
-//        }
-//        return null; // Return null if not found
-//    }
 
-//    public void setTotalHoursWorked(int totalHoursWorked) {
-//        this.totalHoursWorked = totalHoursWorked;
-//    }
 
     // Getters and Setters for other fields
     public int getId() {

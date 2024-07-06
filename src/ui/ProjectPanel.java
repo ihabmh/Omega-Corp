@@ -1,6 +1,8 @@
 package ui;
 
 import ui.Comps.TaskPanel;
+import model.Task;
+import model.Project;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,7 +16,7 @@ public class ProjectPanel extends JPanel {
     private JPanel contentPanel;
     private JPanel statusPanel;
 
-    public ProjectPanel(JPanel panel, int id) {
+    public ProjectPanel(JPanel panel, Project project) {
         setBackground(Color.decode("#FFFEF1"));
         setLayout(new BorderLayout());
         setBorder(BorderFactory.createEmptyBorder(10, 20, 20, 20));
@@ -26,7 +28,7 @@ public class ProjectPanel extends JPanel {
         btnsPanel = new JPanel();
         btnsPanel.setBackground(Color.decode("#FFFEF1"));
 
-        contentTitle = new JLabel("Project Name", SwingConstants.LEFT);
+        contentTitle = new JLabel(project.getName(), SwingConstants.LEFT);
         contentTitle.setFont(new Font("Arial", Font.BOLD, 20));
 
         addTaskBtn = new JButton("+ Task");
@@ -49,11 +51,16 @@ public class ProjectPanel extends JPanel {
         contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.Y_AXIS));
         contentPanel.setBackground(Color.decode("#FFFEF1"));
 
-        // Add your TaskPanel instances here
-        contentPanel.add(new TaskPanel(panel));
-        contentPanel.add(new TaskPanel(panel));
-        contentPanel.add(new TaskPanel(panel));
-        contentPanel.add(new TaskPanel(panel));
+
+        if (project.getTasks() !=null){
+            for(Task task : project.getTasks()){
+                contentPanel.add(new TaskPanel(panel, task));
+                contentPanel.add(Box.createVerticalStrut(20));
+            }
+        }
+
+
+
 
         // Wrap contentPanel in a JScrollPane
         JScrollPane scrollPane = new JScrollPane(contentPanel);

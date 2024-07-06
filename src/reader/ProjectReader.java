@@ -37,6 +37,10 @@ public class ProjectReader {
                     String name = parts[1].trim();
                     List<Task> tasks = parseTasks(parts[2], taskMap);
 
+                    if (tasks.isEmpty()) {
+                        tasks = null; // Set tasks to null if the list is empty
+                    }
+
                     Project project = new Project(id, name, tasks);
                     projectList.add(project);
                     projectMap.put(id, project);
@@ -51,10 +55,10 @@ public class ProjectReader {
 
     private static List<Task> parseTasks(String taskString, Map<Integer, Task> taskMap) {
         return Arrays.stream(taskString.replaceAll("[\\[\\]]", "").split(","))
-                .map(s -> Integer.parseInt(s.trim()))
+                .map(String::trim)
+                .filter(s -> !s.isEmpty())
+                .map(Integer::parseInt)
                 .map(taskMap::get)
                 .collect(Collectors.toList());
     }
-
-
 }

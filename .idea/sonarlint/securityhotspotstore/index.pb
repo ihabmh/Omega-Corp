@@ -1,8 +1,6 @@
 
 =
 src/Main.java,9\2\924f089edb4af5ee45c8a9d1129cd28e2b368138
-E
-src/data/projects.txt,6\8\687d6fc3a6560c4a055fb9c45caa4e5646689123
 >
 Omega Corp.iml,d\c\dc7d5aec539058ef7c33f1b5b5b8fb890d4d36bd
 J
@@ -73,3 +71,5 @@ F
 src/model/Project.java,0\1\019cea73aa8214fbefa84743800130cba09ed9ac
 M
 src/reader/ProjectReader.java,a\f\af9a1a3e80c413ef52c78f7e5b55662c0a08022d
+G
+src/ui/Refreshable.java,8\b\8bd535e182bfba6150e29b7a010ec3c3436391c3

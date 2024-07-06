@@ -50,8 +50,14 @@ public class TaskReader {
     }
 
     private static List<Process> parseProcesses(String processString, Map<Integer, Process> processMap) {
+        if (processString.trim().equals("[]") || processString.trim().equals("null")) {
+            return new ArrayList<>(); // Return an empty list if processString is empty or "null"
+        }
+
         return Arrays.stream(processString.replaceAll("[\\[\\]]", "").split(","))
-                .map(s -> Integer.parseInt(s.trim()))
+                .map(s -> s.trim())
+                .filter(s -> !s.isEmpty()) // Filter out empty strings
+                .map(s -> Integer.parseInt(s))
                 .map(processMap::get)
                 .collect(Collectors.toList());
     }

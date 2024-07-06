@@ -8,11 +8,11 @@ import java.awt.*;
 
 public class MainUI extends JFrame {
 
-    AddProcessPanel addProcessPanel;
-    ProcessPanel processPanel;
-    ProjectCreationPanel projectCreationPanel;
-    ProjectPanel projectPanel;
-    DashboardPanel dashboardPanel;
+//    AddProcessPanel addProcessPanel;
+//    ProcessPanel processPanel;
+//    ProjectCreationPanel projectCreationPanel;
+//    ProjectPanel projectPanel;
+//    DashboardPanel dashboardPanel;
 
 
 
@@ -55,7 +55,7 @@ public class MainUI extends JFrame {
         JPanel mainPanel = new JPanel(new BorderLayout());
         mainPanel.setBackground(Color.decode("#FFFEF1"));
 
-        // Top panel with search bar and create project button
+        // Top panel 
         JPanel topPanel = new JPanel(new BorderLayout());
         topPanel.setBackground(Color.decode("#FFFEF1"));
         topPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
@@ -73,26 +73,26 @@ public class MainUI extends JFrame {
         // Change Panels
 
 
-        JPanel shownPanel = new JPanel();
+        JPanel shownPanel =  new JPanel();
         shownPanel.setLayout(new CardLayout());
 
 
 
-        addProcessPanel = new AddProcessPanel(shownPanel);
-        processPanel = new ProcessPanel(shownPanel);
-        projectCreationPanel = new ProjectCreationPanel(shownPanel);
-        projectPanel = new ProjectPanel(shownPanel, 1);
-        dashboardPanel = new DashboardPanel(shownPanel);
+//        addProcessPanel = new AddProcessPanel(shownPanel);
+//        processPanel = new ProcessPanel(shownPanel);
+//        projectCreationPanel = new ProjectCreationPanel(shownPanel);
+//        projectPanel = new ProjectPanel(shownPanel, 1);
+//        dashboardPanel = new DashboardPanel(shownPanel);
 
 
-        shownPanel.add(addProcessPanel, "addProcessPanel");
-        shownPanel.add(processPanel, "processPanel");
-        shownPanel.add(projectPanel, "projectPanel");
-        shownPanel.add(dashboardPanel, "dashboardPanel");
-        shownPanel.add(projectCreationPanel, "projectCreationPanel");
 
-        CardLayout cardLayout = (CardLayout) shownPanel.getLayout();
-        cardLayout.show(shownPanel, "dashboardPanel");
+
+        shownPanel.add(new DashboardPanel(shownPanel), "dashboardPanel");
+        shownPanel.add(new ProjectCreationPanel(shownPanel), "projectCreationPanel");
+
+
+        CardLayout layout = (CardLayout) shownPanel.getLayout();
+        layout.show(shownPanel, "dashboardPanel");
 
         mainPanel.add(shownPanel, BorderLayout.CENTER);
 

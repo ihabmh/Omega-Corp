@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EquipmentResource implements Resource {
+public class EquipmentResource  {
     private int id;
     private String name;
     private double costPerUnit;
@@ -17,12 +17,12 @@ public class EquipmentResource implements Resource {
         this.costPerUnit = costPerUnit;
     }
 
-    @Override
-    public double calculateMaterialCost(int units) {
+
+    public double calculateEquipmentCost(int units) {
         return units * costPerUnit;
     }
 
-    @Override
+
     public int getDefaultDuration(int units) {
         // Example logic: 1 unit of equipment takes 1 hour
         return units;
