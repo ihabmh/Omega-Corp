@@ -1,5 +1,6 @@
 package ui.Comps;
 
+import model.Project;
 import model.Task;
 import model.Process;
 import ui.AddProcessPanel;
@@ -19,7 +20,7 @@ public class TaskPanel extends JPanel {
     JButton detailsBtn;
     JButton addProcess;
 
-    public TaskPanel(JPanel panel, Task task) {
+    public TaskPanel(JPanel panel, Project project, Task task) {
         setBackground(Color.decode("#FFFEF1"));
         setLayout(new BorderLayout());
 
@@ -41,7 +42,7 @@ public class TaskPanel extends JPanel {
             for (Process process : processes) {
 
                     data[index][0] = process.getName();
-                    data[index][1] = process.getStatus().toString();
+                    data[index][1] = process.getStatus();
                     data[index][2] = "$" + process.getCost();
                     data[index][3] = process.getDuration() + "ms";
                     index++;
@@ -52,8 +53,8 @@ public class TaskPanel extends JPanel {
 
         // Add the total row
         data[index][0] = "TOTAL";
-        data[index][1] = "";
-        data[index][2] = "$" + task.calculateCost();
+        data[index][1] = task.getStatus().toString();
+        data[index][2] = "$" + task.getProgressiveCost();
         data[index][3] = task.getDuration() + "ms";
 
         tablePanel = new JPanel(new BorderLayout());
@@ -113,7 +114,7 @@ public class TaskPanel extends JPanel {
         });
 
         addProcess.addActionListener(e -> {
-            AddProcessPanel app = new AddProcessPanel(panel, task);
+            AddProcessPanel app = new AddProcessPanel(panel, project, task);
             panel.add(app, "addProcessPanel");
             CardLayout cardLayout = (CardLayout) panel.getLayout();
             cardLayout.show(panel, "addProcessPanel");

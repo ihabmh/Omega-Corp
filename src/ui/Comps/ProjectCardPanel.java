@@ -12,7 +12,7 @@ public class ProjectCardPanel extends JPanel {
 
     JLabel prjctName;
     JLabel prjctStatus;
-    JLabel prjctDate;
+    JLabel prjctCost;
     JButton viewBtn;
 
 
@@ -29,13 +29,11 @@ public class ProjectCardPanel extends JPanel {
         prjctName.setFont(new Font("Arial", Font.BOLD, 16));
         prjctName.setPreferredSize(new Dimension(200, 30));
 
-        prjctStatus = new JLabel("Project Status: "+ project.getState());
-//        if(project.getState().toString().equals("COMPLETED")){
-//            prjctStatus.setForeground(Color.GREEN);
-//        }
+        prjctStatus = new JLabel("Project Status: "+ project.getStatus());
 
 
-//        prjctDate = new JLabel("Date");
+
+        prjctCost = new JLabel("Project Cost: $" + project.getCost());
         viewBtn = new JButton("View");
         viewBtn.setBackground(Color.decode("#E0FF25"));
         viewBtn.setForeground(Color.BLACK);
@@ -44,8 +42,8 @@ public class ProjectCardPanel extends JPanel {
         add(prjctName);
         add(Box.createHorizontalGlue());
         add(prjctStatus);
-//        add(Box.createHorizontalGlue());
-//        add(prjctDate);
+        add(Box.createHorizontalGlue());
+        add(prjctCost);
         add(Box.createHorizontalGlue());
         add(viewBtn);
 

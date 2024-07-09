@@ -15,10 +15,10 @@ public class HrPanel extends JPanel {
 
         String[] columnNames = {"Employee Name", "Job Title", "$/Hour"};
 
-        // Get the list of employees
+
         List<HumanResource> employees = process.getEmployees();
 
-        // Create a 2D array to hold the data
+
         Object[][] data = new Object[employees.size()][3];
 
         // Populate the data array

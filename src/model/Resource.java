@@ -1,6 +1,14 @@
 package model;
 
+import java.util.List;
+
 public interface Resource {
-    double calculateMaterialCost(int i);
-    int getDefaultDuration(int i);
+    int getId();
+    String getName();
+    double calculateCost(int units);
+    static List<? extends Resource> getAllResources() {
+        return List.of();  // Default implementation returns an empty list
+    }
+
+
 }

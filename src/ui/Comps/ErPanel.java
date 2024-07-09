@@ -36,7 +36,7 @@ public class ErPanel extends JPanel {
                     .orElseThrow(() -> new RuntimeException("Equipment not found: " + equipmentName));
 
             // Assuming EquipmentResource has a method similar to calculateMaterialCost
-            double cost = equipment.calculateEquipmentCost(count.intValue());
+            double cost = equipment.calculateCost(count.intValue());
             totalCost += cost;
 
 

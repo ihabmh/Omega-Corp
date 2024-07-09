@@ -1,23 +1,28 @@
 package ui;
 
-import model.Task;
+import model.*;
+import model.Process;
 import ui.Comps.*;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AddProcessPanel extends JPanel {
     private JPanel headerPanel;
     private JPanel btnsPanel;
     private JLabel contentTitle;
     private JButton backBtn;
-    private JButton createBtn;
+    private JButton addBtn;
     private JPanel contentPanel;
-    private ListPanel humanResourcesListPanel;
-    private ListPanel materialResourcesListPanel;
-    private ListPanel equipmentResourcesListPanel;
+    private HumanListPanel humanResourcesListPanel;
+    private MaterialListPanel materialResourcesListPanel;
+    private EquipmentListPanel equipmentResourcesListPanel;
+    private JTextField nameField;
+    private JTextField durationField;
 
-    public AddProcessPanel(JPanel panel, Task task) {
+    public AddProcessPanel(JPanel panel, Project project, Task task) {
         // Initialize the panel settings
         setBackground(Color.decode("#FFFEF1"));
         setLayout(new BorderLayout());
@@ -31,7 +36,7 @@ public class AddProcessPanel extends JPanel {
         btnsPanel = new JPanel();
         btnsPanel.setBackground(Color.decode("#FFFEF1"));
 
-        contentTitle = new JLabel("Task Name", SwingConstants.LEFT);
+        contentTitle = new JLabel(task.getName().toString(), SwingConstants.LEFT);
         contentTitle.setFont(new Font("Arial", Font.BOLD, 20));
 
         backBtn = new JButton("Back");
@@ -39,14 +44,14 @@ public class AddProcessPanel extends JPanel {
         backBtn.setForeground(Color.BLACK);
         backBtn.setBorderPainted(false);
 
-        createBtn = new JButton("Create");
-        createBtn.setBackground(Color.BLACK);
-        createBtn.setForeground(Color.WHITE);
-        createBtn.setBorderPainted(false);
+        addBtn = new JButton("Add Process");
+        addBtn.setBackground(Color.BLACK);
+        addBtn.setForeground(Color.WHITE);
+        addBtn.setBorderPainted(false);
 
         // Add components to btnsPanel and headerPanel
         btnsPanel.add(backBtn);
-        btnsPanel.add(createBtn);
+        btnsPanel.add(addBtn);
         headerPanel.add(contentTitle, BorderLayout.WEST);
         headerPanel.add(btnsPanel, BorderLayout.EAST);
 
@@ -69,7 +74,7 @@ public class AddProcessPanel extends JPanel {
         namePanel.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0));
 
         JLabel name = new JLabel("Enter a name:", SwingConstants.LEFT);
-        JTextField nameField = new JTextField(10);
+        nameField = new JTextField(10);
         nameField.setMaximumSize(new Dimension(Integer.MAX_VALUE, 30));  // Set max height to 30 pixels
 
         namePanel.add(name);
@@ -81,29 +86,29 @@ public class AddProcessPanel extends JPanel {
         durationPanel.setBackground(Color.decode("#FFFEF1"));
         durationPanel.setBorder(BorderFactory.createEmptyBorder(10, 0, 10, 0));
 
-        JLabel duration = new JLabel("Enter a duration(ms):", SwingConstants.LEFT);
-        JTextField durationField = new JTextField(10);
+        JLabel duration = new JLabel("Enter a duration (ms):", SwingConstants.LEFT);
+        durationField = new JTextField(10);
         durationField.setMaximumSize(new Dimension(Integer.MAX_VALUE, 30));  // Set max height to 30 pixels
 
         durationPanel.add(duration);
         durationPanel.add(durationField);
 
         // Initialize list panels
-        humanResourcesListPanel = new ListPanel("Human Resources List");
-        materialResourcesListPanel = new ListPanel("Material Resources List");
-        equipmentResourcesListPanel = new ListPanel("Equipment Resources List");
+        humanResourcesListPanel = new HumanListPanel("Human Resources List");
+        materialResourcesListPanel = new MaterialListPanel("Material Resources List");
+        equipmentResourcesListPanel = new EquipmentListPanel("Equipment Resources List");
 
         // Initialize resource panels
-        ResourcePanel humanResourcesPanel = new ResourcePanel("Human Resources:",
-                new String[]{"Choose", "Department A", "Department B", "Manager"},
-                humanResourcesListPanel.getListModel());
-
-        ResourcePanel materialResourcesPanel = new ResourcePanel("Material Resources:",
-                new String[]{"Choose", "Material A", "Material B", "Material C"},
+        MaterialResourcePanel materialResourcesPanel = new MaterialResourcePanel("Material Resources:",
+                MaterialResource.getAllMaterialResources(),
                 materialResourcesListPanel.getListModel());
 
-        ResourcePanel equipmentResourcesPanel = new ResourcePanel("Equipment Resources:",
-                new String[]{"Choose", "Equipment A", "Equipment B", "Equipment C"},
+        HumanResourcePanel humanResourcesPanel = new HumanResourcePanel("Human Resources:",
+                HumanResource.getAllHumanResources(),
+                humanResourcesListPanel.getListModel());
+
+        EquipmentResourcePanel equipmentResourcesPanel = new EquipmentResourcePanel("Equipment Resources:",
+                EquipmentResource.getAllEquipmentResources(),
                 equipmentResourcesListPanel.getListModel());
 
         // Add components to form
@@ -130,12 +135,55 @@ public class AddProcessPanel extends JPanel {
 
         // Add header, content, and lists panels to the main panel
         add(headerPanel, BorderLayout.NORTH);
-        add(contentPanel, BorderLayout.WEST);
+        add(contentPanel, BorderLayout.CENTER);  // Changed to CENTER for proper layout
         add(listsPanel, BorderLayout.EAST);
 
         backBtn.addActionListener(e -> {
             CardLayout cardLayout = (CardLayout) panel.getLayout();
             cardLayout.show(panel, "projectPanel");
         });
+
+        addBtn.addActionListener(e -> {
+            double processDuration;
+            String processName = nameField.getText().trim();
+            try {
+                processDuration = Double.parseDouble(durationField.getText().trim());
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(this, "Invalid duration. Please enter a valid number.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            List<MaterialResource> selectedMaterialResources = getSelectedResources(materialResourcesListPanel.getListModel(), MaterialResource.class);
+            List<EquipmentResource> selectedEquipmentResources = getSelectedResources(equipmentResourcesListPanel.getListModel(), EquipmentResource.class);
+            List<HumanResource> selectedHumanResources = getSelectedResources(humanResourcesListPanel.getListModel(), HumanResource.class);
+
+            // Create a new Process object and add it to the task
+            Process newProcess = Process.createProcess(processName, processDuration, selectedHumanResources, selectedMaterialResources, selectedEquipmentResources);
+            task.addProcess(newProcess);
+            task.calculateCost();
+            project.calculateCost();
+            task.calculateDuration();
+            project.calculateDuration();
+            System.out.println(project.getCost());
+            Task.updateTaskFileWithNewProcess(task.getId(), newProcess.getId());
+
+            JOptionPane.showMessageDialog(this, "Process added successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+
+            // Return to the project panel
+            CardLayout cardLayout = (CardLayout) panel.getLayout();
+            panel.add(new ProjectPanel(panel, project), "projectPanel");
+            cardLayout.show(panel, "projectPanel");
+        });
+    }
+
+    private <T extends Resource> List<T> getSelectedResources(DefaultListModel<T> model, Class<T> resourceClass) {
+        List<T> selectedResources = new ArrayList<>();
+        for (int i = 0; i < model.getSize(); i++) {
+            T resource = model.getElementAt(i);
+            if (resource != null && resourceClass.isInstance(resource)) {
+                selectedResources.add(resource);
+            }
+        }
+        return selectedResources;
     }
 }

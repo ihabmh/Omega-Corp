@@ -1,30 +1,21 @@
 package ui;
 
-import ui.Comps.FilterPanel;
-
 import javax.swing.*;
 import java.awt.*;
-
+import java.awt.event.ActionListener;
 
 public class MainUI extends JFrame {
 
-//    AddProcessPanel addProcessPanel;
-//    ProcessPanel processPanel;
-//    ProjectCreationPanel projectCreationPanel;
-//    ProjectPanel projectPanel;
-//    DashboardPanel dashboardPanel;
-
-
+    private JButton dashboardButton;
+    private JButton adminButton;
 
     public MainUI() {
         setTitle("Omega");
         setSize(1200, 800);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
-        setLocationRelativeTo(null);
-        setLocationRelativeTo(null);
 
-        ImageIcon icon = new ImageIcon("src\\img\\icon.png");
+        ImageIcon icon = new ImageIcon("src/img/icon.png");
         setIconImage(icon.getImage());
 
         // Sidebar panel
@@ -47,63 +38,50 @@ public class MainUI extends JFrame {
         logo.setBorder(BorderFactory.createEmptyBorder(20, 0, 20, 0)); // Padding around the logo
         sidebar.add(logo);
 
-        // Add sidebar buttons
-        sidebar.add(createSidebarButton("Dashboard", true));
-        sidebar.add(createSidebarButton("Admin", false));
-
         // Main panel
         JPanel mainPanel = new JPanel(new BorderLayout());
         mainPanel.setBackground(Color.decode("#FFFEF1"));
 
-        // Top panel 
+        // Top panel
         JPanel topPanel = new JPanel(new BorderLayout());
         topPanel.setBackground(Color.decode("#FFFEF1"));
         topPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
-
-//        JTextField searchField = new JTextField();
-//        searchField.setPreferredSize(new Dimension(300, 30));
-        topPanel.add(new FilterPanel(), BorderLayout.CENTER);
 
         JButton createProjectButton = new JButton("Project");
         createProjectButton.setBackground(Color.BLACK);
         createProjectButton.setForeground(Color.WHITE);
 
+
         mainPanel.add(topPanel, BorderLayout.NORTH);
 
-        // Change Panels
-
-
-        JPanel shownPanel =  new JPanel();
+        // Card Layout panel
+        JPanel shownPanel = new JPanel();
         shownPanel.setLayout(new CardLayout());
-
-
-
-//        addProcessPanel = new AddProcessPanel(shownPanel);
-//        processPanel = new ProcessPanel(shownPanel);
-//        projectCreationPanel = new ProjectCreationPanel(shownPanel);
-//        projectPanel = new ProjectPanel(shownPanel, 1);
-//        dashboardPanel = new DashboardPanel(shownPanel);
-
-
-
 
         shownPanel.add(new DashboardPanel(shownPanel), "dashboardPanel");
         shownPanel.add(new ProjectCreationPanel(shownPanel), "projectCreationPanel");
+        shownPanel.add(new AdminPanel(shownPanel), "adminPanel");
 
-
-        CardLayout layout = (CardLayout) shownPanel.getLayout();
-        layout.show(shownPanel, "dashboardPanel");
+        CardLayout cardLayout = (CardLayout) shownPanel.getLayout();
+        cardLayout.show(shownPanel, "DashboardPanel");
 
         mainPanel.add(shownPanel, BorderLayout.CENTER);
+        topPanel.add(new FilterPanel(shownPanel), BorderLayout.CENTER);
 
+        // Create sidebar buttons
+        dashboardButton = createSidebarButton("Dashboard", true, e -> showDashboard(shownPanel));
+        adminButton = createSidebarButton("Admin", false, e -> showAdmin(shownPanel));
+
+        // Add buttons to sidebar
+        sidebar.add(dashboardButton);
+        sidebar.add(adminButton);
 
         getContentPane().setLayout(new BorderLayout());
         getContentPane().add(sidebar, BorderLayout.WEST);
         getContentPane().add(mainPanel, BorderLayout.CENTER);
-
     }
 
-    private JButton createSidebarButton(String text, boolean selected) {
+    private JButton createSidebarButton(String text, boolean selected, ActionListener actionListener) {
         JButton button = new JButton(text);
         button.setMaximumSize(new Dimension(200, 50));
         button.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -113,13 +91,32 @@ public class MainUI extends JFrame {
         button.setHorizontalAlignment(SwingConstants.LEFT);
         button.setMargin(new Insets(10, 20, 10, 20));
         button.setFont(button.getFont().deriveFont(Font.BOLD, 12));
+        button.addActionListener(actionListener);  // Add the ActionListener
         return button;
     }
 
+    private void showDashboard(JPanel panel) {
+        CardLayout cardLayout = (CardLayout) panel.getLayout();
+        cardLayout.show(panel, "dashboardPanel");
+        updateButtonSelection(dashboardButton, adminButton);
+    }
 
+    private void showAdmin(JPanel panel) {
+        CardLayout cardLayout = (CardLayout) panel.getLayout();
+        cardLayout.show(panel, "adminPanel");
+        updateButtonSelection(adminButton, dashboardButton);
+    }
 
+    private void updateButtonSelection(JButton selectedButton, JButton... otherButtons) {
+        setButtonSelected(selectedButton, true);
+        for (JButton button : otherButtons) {
+            setButtonSelected(button, false);
+        }
+    }
 
-
+    private void setButtonSelected(JButton button, boolean selected) {
+        button.setBackground(selected ? Color.decode("#F9FFD3") : Color.decode("#E1FF25"));
+    }
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> {

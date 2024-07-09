@@ -1,6 +1,6 @@
 | ID | Name         | Job Title           | Hourly Rate |
 |----|--------------|---------------------|-------------|
-| 1  | John Smith   | model.Project Manager     | $40.00|
+| 1  | John Smith   | Project Manager     | $40.00|
 | 2  | Jane Doe     | Electrical Engineer | $35.00      |
 | 3  | Sam Wilson   | Mechanical Engineer | $33.00      |
 | 4  | Lisa Johnson | Software Developer  | $45.00      |

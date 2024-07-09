@@ -44,7 +44,7 @@ public class ProcessReader {
                     Process.Status status = parseStatus(parts[6].trim());
                     double cost = Double.parseDouble(parts[7].trim());
 
-                    Process process = new Process(id, name, humanResources, materialResources, equipmentResources, duration, status, cost);
+                    Process process = new Process(id, name,duration, humanResources, materialResources, equipmentResources, cost, status);
                     processList.add(process);
                     processMap.put(id, process);
                 }
@@ -69,12 +69,12 @@ public class ProcessReader {
     }
 
     private static Process.Status parseStatus(String status) {
-        switch (status.toLowerCase()) {
-            case "done":
+        switch (status) {
+            case "COMPLETED":
                 return Process.Status.COMPLETED;
-            case "ongoing":
+            case "IN_PROGRESS":
                 return Process.Status.IN_PROGRESS;
-            case "planned":
+            case "NOT_STARTED":
                 return Process.Status.NOT_STARTED;
             default:
                 return Process.Status.NOT_STARTED;

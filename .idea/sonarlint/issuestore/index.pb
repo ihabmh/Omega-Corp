@@ -23,12 +23,6 @@ I
 src/ui/Comps/MrPanel.java,9\2\92d46957ebcdabcef7c6662ed36e6cff895cbb51
 K
 src/ui/AddProcessPanel.java,0\3\033c11bedb128c80c1df8d56d0f3049dfb1e12a7
-O
-src/ui/Comps/ResourcePanel.java,2\d\2d7b1669c83ca55a6d5cf41fd183cb9c70995adb
-K
-src/ui/Comps/ListPanel.java,7\9\793524dcdd74ccc301b8f6635aa3c5b0852534cd
-M
-src/ui/Comps/FilterPanel.java,0\f\0fe6cb2d8f077733d3cb66dc68925454a5082e64
 R
 "src/ui/Comps/ProjectCardPanel.java,b\a\baa2d2f28ff1f4a25810a288515604c567d70b0a
 D
@@ -71,5 +65,19 @@ F
 src/model/Project.java,0\1\019cea73aa8214fbefa84743800130cba09ed9ac
 M
 src/reader/ProjectReader.java,a\f\af9a1a3e80c413ef52c78f7e5b55662c0a08022d
+H
+src/ui/AddTaskPanel.java,2\4\245c77003fce991d6a56d06fa94f9b7a9913e162
+W
+'src/ui/Comps/MaterialResourcePanel.java,4\0\407ce06fdeaa69cd2aa425e8fc080ec34b4f612b
+T
+$src/ui/Comps/EquipmentListPanel.java,8\6\8611109026f711090544df4b8407daffa69d8c5b
+P
+ src/ui/Comps/HumanListPanel.java,1\1\114819ef2d85157830437fdf6c67aa8400d83bea
+T
+$src/ui/Comps/HumanResourcePanel.java,6\c\6c2d6d30fbf4a1cbd5fa3167cd3b31ac5d18963c
+X
+(src/ui/Comps/EquipmentResourcePanel.java,9\e\9e924a5ef41b0d066bd25e7fbef19a0c61af779a
 G
-src/ui/Refreshable.java,8\b\8bd535e182bfba6150e29b7a010ec3c3436391c3
+src/ui/FilterPanel.java,d\5\d5d1fb7cf6b7c2434707b5a80cb70cfa7e844de3
+F
+src/ui/AdminPanel.java,a\6\a6173d29db59f504707a7719c5e7c4f118caf6c2

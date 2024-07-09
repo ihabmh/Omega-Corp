@@ -39,7 +39,7 @@ public class MrPanel extends JPanel {
                     .findFirst()
                     .orElseThrow(() -> new RuntimeException("Resource not found: " + resourceName));
 
-            double cost = material.calculateMaterialCost(count.intValue());
+            double cost = material.calculateCost(count.intValue());
             totalCost += cost;
 
             data[index][0] = resourceName;
