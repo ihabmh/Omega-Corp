@@ -7,3 +7,6 @@ ID | Process Name            | Human Resources | Material Resources | Equipment 
 5  | Process 2              | [1, 8]           | [1]                 | [1, 5]               | 1000    | COMPLETED| 780.50
 6  | Process 1              | [1, 5]           | [4, 8]              | [4, 4]               | 5000    | COMPLETED| 406.25
 7  | Process 2              | [7, 6]           | [4, 4, 2, 1, 7]     | [4, 6]               | 15000   | COMPLETED| 2495.50
+8  | Process 1              | [8, 2, 3]        | [4, 6, 5, 7, 7, 6]  | [4, 6, 8]            | 10000   | COMPLETED| 1306.50
+9  | Process 2              | [1, 1]           | [1]                 | [1, 1]               | 5000    | COMPLETED| 1402.50
+10 | Process 1              | [1, 1]           | [1, 1, 1]           | [1]                  | 10000   | COMPLETED| 1307.50

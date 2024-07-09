@@ -26,7 +26,8 @@ public class AdminPanel extends JPanel {
         contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.Y_AXIS));
 
 
-
+        // TODO: be able to add resources to the program
+        // methode to write and read resources are ready
 
 
         add(headerPanel, BorderLayout.NORTH);

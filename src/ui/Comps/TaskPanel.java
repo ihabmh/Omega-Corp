@@ -42,7 +42,7 @@ public class TaskPanel extends JPanel {
             for (Process process : processes) {
 
                     data[index][0] = process.getName();
-                    data[index][1] = process.getStatus();
+                    data[index][1] = process.getStatus().toString();
                     data[index][2] = "$" + process.getCost();
                     data[index][3] = process.getDuration() + "ms";
                     index++;

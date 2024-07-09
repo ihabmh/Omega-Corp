@@ -164,7 +164,6 @@ public class AddProcessPanel extends JPanel {
             project.calculateCost();
             task.calculateDuration();
             project.calculateDuration();
-            System.out.println(project.getCost());
             Task.updateTaskFileWithNewProcess(task.getId(), newProcess.getId());
 
             JOptionPane.showMessageDialog(this, "Process added successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);

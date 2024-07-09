@@ -1,5 +1,2 @@
 ID | Name                      | Process
 ---|---------------------------|-------------------
-1  | CONCEPTION               | [1, 2, 3]
-2  | RAW_MATERIAL_PREPARATION | [4, 5]
-3  | COMPONENT_MANUFACTURING  | [6, 7]

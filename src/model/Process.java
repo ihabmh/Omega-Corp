@@ -119,6 +119,12 @@ public class Process {
     }
 
     public void execute() throws InterruptedException {
+        // Check if the status is already COMPLETED
+        if (getStatus() == Status.COMPLETED) {
+            System.out.println("Process: " + name + " is already completed.");
+            return; // Exit the method if the process is already completed
+        }
+
         setStatus(Status.IN_PROGRESS);
         updateStatusInFile(this.getId(), Status.IN_PROGRESS);
         System.out.println("Starting process: " + name);
@@ -131,6 +137,7 @@ public class Process {
         // Update the status in the file
         updateStatusInFile(this.getId(), Status.COMPLETED);
     }
+
     public void updateStatusInFile(int processId, Status newStatus) {
         File file = new File("src\\data\\process.txt");
         File tempFile = new File("src\\data\\process_temp.txt");
@@ -181,8 +188,8 @@ public class Process {
         return duration;
     }
 
-    public String getStatus() {
-        return status.toString();
+    public Status getStatus() {
+        return status;
     }
 
     public double getCost() {
